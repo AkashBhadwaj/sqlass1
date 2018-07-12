@@ -1,0 +1,29 @@
+//First:
+create database akash;
+use chandrakant;
+create table party(party_code int primary key,party_name varchar(20));
+create table politician( p_no int primary key,p_name varchar(20),p_desc varchar(30),constituency varchar(20),party_code int,
+foreign key(party_code) references party(party_code);
+//Second:
+
+create table book(book_name varchar(20) primary key,publisher varchar(20),price int);
+create table member(mno int primary key,m_name varchar(20),address varchar(30),city varchar(20),catagory varchar(20));
+create table book_member(book_name varchar(20),
+mno int,
+date_of_issue date,
+date_of_return date,
+constraint abc foreign key (book_name) references book(book_name),
+constraint cdf foreign key (mno) references member(mno));
+
+//third:
+create table player(p_no int primary key,p_name varchar(20),club_name varchar(20));
+create table game(g_no int primary key,g_name varchar(20),no_of_player int,name_of_coach varchar(20),captain_name varchar(20));
+create table player_game(p_no int, constraint game1 foreign key(p_no) references player(p_no),g_no int,constraint game2 foreign key(g_no) references game(g_no));
+
+//fourth:
+create table salgrade(grade varchar(20) primary key,minsal int,maxsal int);
+create table dept(deptno int primary key,dname varchar(20),location varchar(20));
+create table emp(empno int primary key,ename varchar(20),address varchar(20),city varchar(20),zip varchar(20),email varchar(20),hiredate date,sal int,mgr varchar(20),deptno int,
+constraint emp1 foreigkey (mgr) references salgrade(grade),
+constraint emp2 foreign key (deptno) references dept(deptno));
+create table dependents(d_name varchar(20),d_relationship varchar(20),empno int,constraint emp3 foreign key (empno) references emp(empno));
