@@ -1,0 +1,24 @@
+1)
+select * from emp_new
+where department_id=(select department_id from departments where department_name="accounting");
+3)
+select first_name,last_name,max(salary),department_name from emp_new as d  join departments as z
+where d.department_id=z.department_id
+group by department_name;
+4)
+select job_id ,g.department_id from emp_new join departments as g where  g.department_id  not in (20,30);
+
+6)
+select distinct(JOB_ID),max(salary) from emp_new group by JOB_ID;
+
+7)
+select First_name,last_name,salary from emp_new
+where salary>(select min(salary) from emp_new where department_id=20);
+9)
+delete  from departments where department_id=(select department_id from employee where last_name='gupta');
+8)
+select * from employee where salary>(select max(salary) from employee where job_id='ac_mgr');
+
+
+
+
